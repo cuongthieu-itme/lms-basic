@@ -11,13 +11,17 @@ use App\Http\Controllers\QuizzController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Setting;
 
 Route::get('/', function () {
+    $settings = Setting::first();
+    
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'settings' => $settings,
     ]);
 });
 

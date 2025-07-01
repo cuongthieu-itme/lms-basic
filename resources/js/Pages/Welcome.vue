@@ -3,7 +3,7 @@
     <div class="min-h-screen bg-gray-50 text-black dark:bg-black dark:text-white transition-colors duration-300 flex flex-col">
         <header class="flex justify-between items-center p-6 max-w-6xl w-full mx-auto">
             <div class="text-2xl font-bold tracking-wide">
-                {{ page.props.settings.site_name ?? 'MonLMS' }} 
+                {{ settings?.site_name ?? 'MonLMS' }} 
             </div>
 
             <nav class="flex items-center space-x-4">
@@ -67,13 +67,13 @@
 
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import { usePage } from '@inertiajs/vue3'
-const page=usePage();
+
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String,
+    settings: Object,
 })
 </script>
 
