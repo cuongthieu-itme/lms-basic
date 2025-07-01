@@ -4,13 +4,13 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
           </svg>
-          Retour
+          Trở về
         </Link>
-      <h2 class="text-2xl font-bold mb-6 text-gray-800 mt-2">Modifier le Quiz</h2>
+      <h2 class="text-2xl font-bold mb-6 text-gray-800 mt-2">Chỉnh sửa Quiz</h2>
       
       <form @submit.prevent="submit">
         <div class="mb-4">
-          <label for="title" class="block text-sm font-medium text-gray-700">Titre du quiz</label>
+          <label for="title" class="block text-sm font-medium text-gray-700">Tiêu đề quiz</label>
           <input
             v-model="form.title"
             type="text"
@@ -21,13 +21,13 @@
         </div>
   
         <div class="mb-4">
-          <label for="course_id" class="block text-sm font-medium text-gray-700">Cours associé</label>
+          <label for="course_id" class="block text-sm font-medium text-gray-700">Khóa học</label>
           <select
             v-model="form.course_id"
             id="course_id"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
           >
-            <option value="" disabled>Sélectionnez un cours</option>
+            <option value="" disabled>Chọn khóa học</option>
             <option v-for="course in courses" :key="course.id" :value="course.id">
               {{ course.title }}
             </option>
@@ -40,7 +40,7 @@
             type="submit"
             class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-150"
           >
-            Enregistrer
+            Lưu
           </button>
         </div>
       </form>
@@ -67,15 +67,15 @@
       onSuccess: () => {
         Swal.fire({
           icon: 'success',
-          title: 'Succès',
-          text: 'Le quiz a été modifié avec succès.',
+          title: 'Thành công',
+          text: 'Quiz đã được cập nhật thành công.',
         })
       },
       onError: () => {
         Swal.fire({
           icon: 'error',
-          title: 'Erreur',
-          text: 'Veuillez vérifier les champs du formulaire.',
+          title: 'Lỗi',
+          text: 'Vui lòng kiểm tra lại các trường.',
         })
       }
     })

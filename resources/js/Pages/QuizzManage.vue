@@ -1,12 +1,12 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
       <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-800">Gestion des Quizz — {{ courseTitle }}</h1>
+        <h1 class="text-3xl font-bold text-gray-800">Quản lý Quiz — {{ courseTitle }}</h1>
         <a
           href="/admin/quizz/create"
           class="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
         >
-          + Ajouter un Quizz
+          + Thêm Quiz
         </a>
       </div>
   
@@ -14,10 +14,10 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Nom du Quizz</th>
-              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Nombre de Questions</th>
-              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Date de Création</th>
-              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Actions</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Tên Quiz</th>
+              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Số câu hỏi</th>
+              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Ngày tạo</th>
+              <th class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase">Hành động</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -30,18 +30,18 @@
                   :href="`/admin/quizz/${quizz.id}/edit`"
                   class="bg-yellow-500 text-white px-4 py-2 rounded-full shadow hover:bg-yellow-600 transition"
                 >
-                  Modifier
+                  Chỉnh sửa
                 </a>
                 <button
                   @click="deleteQuizz(quizz.id)"
                   class="bg-red-500 text-white px-4 py-2 rounded-full shadow hover:bg-red-600 transition"
                 >
-                  Supprimer
+                  Xóa
                 </button>
               </td>
             </tr>
             <tr v-if="quizzList.length === 0">
-              <td colspan="4" class="text-center text-gray-500 py-6">Aucun quizz ajouté pour ce cours.</td>
+              <td colspan="4" class="text-center text-gray-500 py-6">Chưa có quiz nào cho khóa học này.</td>
             </tr>
           </tbody>
         </table>
@@ -62,15 +62,15 @@
   ]);
   
   function formatDate(date) {
-    return new Date(date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    return new Date(date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' });
   }
   
   function deleteQuizz(id) {
-    if (confirm('Voulez-vous supprimer ce quizz ?')) {
+    if (confirm('Bạn có chắc muốn xóa quiz này?')) {
       const index = quizzList.value.findIndex(q => q.id === id);
       if (index !== -1) {
         quizzList.value.splice(index, 1);
-        alert('Quizz supprimé avec succès.');
+        alert('Xóa quiz thành công.');
       }
     }
   }

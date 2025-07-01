@@ -7,9 +7,9 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
           </svg>
-          Retour
+          Trở về
         </Link>
-        <h1 class="text-3xl font-bold text-gray-800">Créer / Gérer un Cours</h1>
+        <h1 class="text-3xl font-bold text-gray-800">Tạo / Quản lý khóa học</h1>
       </div>
     </div>
 
@@ -18,31 +18,31 @@
       <form @submit.prevent="submitCourse" class="space-y-6" enctype="multipart/form-data">
         <!-- Titre -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2">Titre du Cours</label>
+          <label class="block text-gray-700 font-medium mb-2">Tiêu đề khóa học</label>
           <input
             v-model="course.title"
             type="text"
             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            placeholder="Entrez le titre du cours"
+            placeholder="Nhập tiêu đề khóa học"
           />
           <p v-if="errors.title" class="text-red-600 text-sm mt-1">{{ errors.title }}</p>
         </div>
 
         <!-- Description -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2">Description du Cours</label>
+          <label class="block text-gray-700 font-medium mb-2">Mô tả khóa học</label>
           <textarea
             v-model="course.description"
             rows="4"
             class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            placeholder="Décrivez le cours en quelques lignes"
+            placeholder="Mô tả khóa học trong vài dòng"
           ></textarea>
           <p v-if="errors.description" class="text-red-600 text-sm mt-1">{{ errors.description }}</p>
         </div>
 
         <!-- Photo -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2">Image de Couverture</label>
+          <label class="block text-gray-700 font-medium mb-2">Ảnh bìa</label>
           <input
             type="file"
             @change="handleFileUpload"
@@ -54,12 +54,12 @@
 
         <!-- Sélection Instructeur avec filtre -->
         <div>
-          <label class="block text-gray-700 font-medium mb-2">Instructeur</label>
+          <label class="block text-gray-700 font-medium mb-2">Giảng viên</label>
           <input
             type="text"
             v-model="searchQuery"
             class="w-full border border-gray-300 rounded-lg p-3 mb-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            placeholder="Chercher un instructeur..."
+            placeholder="Tìm kiếm giảng viên..."
           />
           <div class="max-h-40 overflow-auto border rounded-lg">
             <div
@@ -72,7 +72,7 @@
             </div>
           </div>
           <div v-if="course.instructor_id" class="mt-2 text-sm text-green-600">
-            Instructeur sélectionné : {{ selectedInstructorName }}
+            Giảng viên đã chọn: {{ selectedInstructorName }}
           </div>
           <p v-if="errors.instructor_id" class="text-red-600 text-sm mt-1">{{ errors.instructor_id }}</p>
         </div>
@@ -80,10 +80,10 @@
         <!-- Boutons -->
         <div class="flex justify-end space-x-4">
           <button type="reset" class="px-6 py-2 bg-gray-300 rounded-full hover:bg-gray-400 text-gray-800">
-            Réinitialiser
+            Đặt lại
           </button>
           <button type="submit" class="px-6 py-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition">
-            Enregistrer
+            Lưu
           </button>
         </div>
       </form>
@@ -139,19 +139,19 @@ function submitCourse() {
   let hasError = false
 
   if (!course.value.title) {
-    errors.value.title = "Le titre du cours est requis."
+    errors.value.title = "Tiêu đề khóa học là bắt buộc."
     hasError = true
   }
   if (!course.value.description) {
-    errors.value.description = "La description est requise."
+    errors.value.description = "Mô tả là bắt buộc."
     hasError = true
   }
   if (!course.value.photo_path_course) {
-    errors.value.photo = "L'image de couverture est requise."
+    errors.value.photo = "Ảnh bìa là bắt buộc."
     hasError = true
   }
   if (!course.value.instructor_id) {
-    errors.value.instructor_id = "Veuillez sélectionner un instructeur."
+    errors.value.instructor_id = "Vui lòng chọn giảng viên."
     hasError = true
   }
 
@@ -166,7 +166,7 @@ function submitCourse() {
   router.post(route('course.store'), formData, {
     onSuccess: () => {
       Toastify({
-        text: "Cours créé avec succès !",
+        text: "Tạo khóa học thành công!",
         duration: 3000,
         gravity: "top",
         position: "right",

@@ -1,9 +1,9 @@
 <template>
-    <Head title="Bienvenue sur le LMS" />
+    <Head title="Chào mừng đến với LMS" />
     <div class="min-h-screen bg-gray-50 text-black dark:bg-black dark:text-white transition-colors duration-300 flex flex-col">
         <header class="flex justify-between items-center p-6 max-w-6xl w-full mx-auto">
             <div class="text-2xl font-bold tracking-wide">
-                {{ settings?.site_name ?? 'MonLMS' }} 
+                {{ settings?.site_name ?? 'LMS' }} 
             </div>
 
             <nav class="flex items-center space-x-4">
@@ -12,7 +12,7 @@
                     :href="route('dashboard')"
                     class="px-4 py-2 rounded-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition"
                 >
-                    Tableau de bord
+                    Bảng điều khiển
                 </Link>
 
                 <template v-else>
@@ -21,7 +21,7 @@
                         :href="route('login')"
                         class="px-4 py-2 rounded-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition"
                     >
-                        Connexion
+                        Đăng nhập
                     </Link>
 
                     <Link
@@ -29,7 +29,7 @@
                         :href="route('register')"
                         class="px-4 py-2 rounded-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition"
                     >
-                        Inscription
+                        Đăng ký
                     </Link>
                 </template>
             </nav>
@@ -38,27 +38,24 @@
         <main class="flex-grow flex items-center justify-center text-center px-6">
             <div class="max-w-2xl">
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Apprenez, progressez et réussissez avec <span class="text-blue-500">MonLMS</span>.
+                    Học hỏi, tiến bộ và thành công cùng <span class="text-blue-500">LMS</span>.
                 </h1>
                 <p class="text-lg md:text-xl mb-8 text-black/70 dark:text-white/70">
-                    Découvrez une plateforme simple et intuitive pour suivre vos cours, gérer vos examens et booster vos compétences.
+                    Khám phá một nền tảng đơn giản, trực quan giúp bạn theo dõi khóa học, quản lý bài kiểm tra và nâng cao kỹ năng của mình.
                 </p>
 
                 <Link
                     :href="canRegister ? route('register') : (canLogin ? route('login') : '#')"
                     class="inline-block px-8 py-3 text-lg rounded-full bg-blue-500 text-white hover:bg-blue-700 transition ease-in"
                 >
-                    Commencer maintenant
+                    Bắt đầu ngay
                 </Link>
             </div>
         </main>
 
         <footer class="py-6 text-center text-xs text-black/50 dark:text-white/40 border-t border-black/10 dark:border-white/10">
     <p class="mb-1">
-        © 2025 MonLMS — Apprendre n’a jamais été aussi simple.
-    </p>
-    <p>
-        Développé avec ❤️ sous Laravel {{ laravelVersion }} & PHP {{ phpVersion }}
+        © 2025 MonLMS — Học tập chưa bao giờ dễ dàng đến thế.
     </p>
 </footer>
 

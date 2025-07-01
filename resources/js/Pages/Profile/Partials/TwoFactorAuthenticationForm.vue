@@ -107,29 +107,29 @@ const disableTwoFactorAuthentication = () => {
 <template>
     <ActionSection>
         <template #title>
-            Two Factor Authentication
+            Xác thực hai yếu tố
         </template>
 
         <template #description>
-            Add additional security to your account using two factor authentication.
+            Tăng cường bảo mật cho tài khoản của bạn bằng xác thực hai yếu tố.
         </template>
 
         <template #content>
             <h3 v-if="twoFactorEnabled && ! confirming" class="text-lg font-medium text-gray-900">
-                You have enabled two factor authentication.
+                Bạn đã bật xác thực hai yếu tố.
             </h3>
 
             <h3 v-else-if="twoFactorEnabled && confirming" class="text-lg font-medium text-gray-900">
-                Finish enabling two factor authentication.
+                Hoàn tất kích hoạt xác thực hai yếu tố.
             </h3>
 
             <h3 v-else class="text-lg font-medium text-gray-900">
-                You have not enabled two factor authentication.
+                Bạn chưa bật xác thực hai yếu tố.
             </h3>
 
             <div class="mt-3 max-w-xl text-sm text-gray-600">
                 <p>
-                    When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.
+                    Khi kích hoạt xác thực hai yếu tố, bạn sẽ được yêu cầu nhập mã bảo mật ngẫu nhiên trong quá trình đăng nhập. Bạn có thể lấy mã này từ ứng dụng Google Authenticator trên điện thoại.
                 </p>
             </div>
 
@@ -137,11 +137,11 @@ const disableTwoFactorAuthentication = () => {
                 <div v-if="qrCode">
                     <div class="mt-4 max-w-xl text-sm text-gray-600">
                         <p v-if="confirming" class="font-semibold">
-                            To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code.
+                            Để hoàn tất kích hoạt xác thực hai yếu tố, hãy quét mã QR dưới đây bằng ứng dụng xác thực trên điện thoại hoặc nhập khóa cài đặt và mã OTP được tạo.
                         </p>
 
                         <p v-else>
-                            Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application or enter the setup key.
+                            Xác thực hai yếu tố đã được bật. Hãy quét mã QR dưới đây bằng ứng dụng xác thực hoặc nhập khóa cài đặt.
                         </p>
                     </div>
 
@@ -175,7 +175,7 @@ const disableTwoFactorAuthentication = () => {
                 <div v-if="recoveryCodes.length > 0 && ! confirming">
                     <div class="mt-4 max-w-xl text-sm text-gray-600">
                         <p class="font-semibold">
-                            Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.
+                            Lưu trữ các mã khôi phục này trong trình quản lý mật khẩu an toàn. Chúng có thể được dùng để khôi phục truy cập nếu bạn mất thiết bị xác thực hai yếu tố.
                         </p>
                     </div>
 
@@ -191,7 +191,7 @@ const disableTwoFactorAuthentication = () => {
                 <div v-if="! twoFactorEnabled">
                     <ConfirmsPassword @confirmed="enableTwoFactorAuthentication">
                         <PrimaryButton type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">
-                            Enable
+                            Bật
                         </PrimaryButton>
                     </ConfirmsPassword>
                 </div>
@@ -205,7 +205,7 @@ const disableTwoFactorAuthentication = () => {
                             :class="{ 'opacity-25': enabling }"
                             :disabled="enabling"
                         >
-                            Confirm
+                            Xác nhận
                         </PrimaryButton>
                     </ConfirmsPassword>
 
@@ -214,7 +214,7 @@ const disableTwoFactorAuthentication = () => {
                             v-if="recoveryCodes.length > 0 && ! confirming"
                             class="me-3"
                         >
-                            Regenerate Recovery Codes
+                            Tạo lại mã khôi phục
                         </SecondaryButton>
                     </ConfirmsPassword>
 
@@ -223,7 +223,7 @@ const disableTwoFactorAuthentication = () => {
                             v-if="recoveryCodes.length === 0 && ! confirming"
                             class="me-3"
                         >
-                            Show Recovery Codes
+                            Hiển thị mã khôi phục
                         </SecondaryButton>
                     </ConfirmsPassword>
 
@@ -233,7 +233,7 @@ const disableTwoFactorAuthentication = () => {
                             :class="{ 'opacity-25': disabling }"
                             :disabled="disabling"
                         >
-                            Cancel
+                            Hủy
                         </SecondaryButton>
                     </ConfirmsPassword>
 
@@ -243,7 +243,7 @@ const disableTwoFactorAuthentication = () => {
                             :class="{ 'opacity-25': disabling }"
                             :disabled="disabling"
                         >
-                            Disable
+                            Tắt
                         </DangerButton>
                     </ConfirmsPassword>
                 </div>

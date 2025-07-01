@@ -5,19 +5,19 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
           </svg>
-          Retour
+          Trở về
         </Link>
       <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-        Créer un Nouveau Quizz
+        Tạo Quiz mới
       </h1>
 
       <form @submit.prevent="confirmCreation" class="space-y-5">
         <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-2">Titre du Quizz</label>
+          <label class="block text-sm font-semibold text-gray-600 mb-2">Tiêu đề Quiz</label>
           <input
             v-model="form.title"
             type="text"
-            placeholder="Titre du quizz"
+            placeholder="Tiêu đề quiz"
             class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
@@ -27,13 +27,13 @@
         </div>
 
         <div>
-          <label class="block text-sm font-semibold text-gray-600 mb-2">Cours associé</label>
+          <label class="block text-sm font-semibold text-gray-600 mb-2">Khóa học</label>
           <select
             v-model="form.course_id"
             class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           >
-            <option value="" disabled>Sélectionnez un cours</option>
+            <option value="" disabled>Chọn khóa học</option>
             <option
               v-for="course in courses"
               :key="course.id"
@@ -52,14 +52,14 @@
             type="submit"
             class="bg-blue-600 text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition"
           >
-            Créer
+            Tạo
           </button>
           <button
             type="button"
             @click="form.reset"
             class="bg-gray-300 text-gray-800 px-6 py-3 rounded-full shadow hover:bg-gray-400 transition"
           >
-            Réinitialiser
+            Đặt lại
           </button>
         </div>
       </form>
@@ -83,20 +83,20 @@ const form = useForm({
 
 function confirmCreation() {
   Swal.fire({
-    title: 'Confirmer la création',
-    text: "Voulez-vous vraiment créer ce quiz ?",
+    title: 'Xác nhận tạo',
+    text: "Bạn có chắc muốn tạo quiz này?",
     icon: 'question',
     showCancelButton: true,
     confirmButtonColor: '#2563eb',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Oui, créer'
+    confirmButtonText: 'Vâng, tạo'
   }).then((result) => {
     if (result.isConfirmed) {
       form.post(route('quiz.store'), {
         onSuccess: () => {
           Swal.fire({
-            title: 'Succès !',
-            text: 'Le quiz a été créé avec succès.',
+            title: 'Thành công!',
+            text: 'Quiz đã được tạo thành công.',
             icon: 'success',
             confirmButtonColor: '#2563eb'
           })

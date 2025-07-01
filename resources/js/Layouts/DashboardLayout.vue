@@ -36,7 +36,7 @@ const logout = () => {
     <nav class="bg-white shadow p-4 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <img :src="page.props.settings.logo_path??'/storage/logos/default-lms.png'" alt="Logo" class="h-10">
-        <span class="font-bold text-xl text-gray-700">MyLMS</span>
+        <span class="font-bold text-xl text-gray-700">{{ page.props.settings?.site_name ?? 'LMS' }}</span>
       </div>
       <div class="relative" ref="dropdownRef">
         <img 
@@ -46,11 +46,11 @@ const logout = () => {
           @click="dropdownOpen = !dropdownOpen"
         >
         <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-1 z-50">
-          <Link :href="route('profile.show')" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profil</Link>
-          <Link :href="route('admin.page')" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Admin</Link>
+          <Link :href="route('profile.show')" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Hồ sơ</Link>
+          <Link :href="route('admin.page')" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Quản trị</Link>
           
             <button @click="logout" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
-              Se déconnecter
+              Đăng xuất
             </button>
           
         </div>

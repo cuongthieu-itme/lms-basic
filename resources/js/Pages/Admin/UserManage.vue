@@ -5,16 +5,16 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
           </svg>
-          Retour
+          Trở về
       </Link>
-      <h1 class="text-3xl font-bold text-gray-800 mb-6">👥 Gestion des Utilisateurs & Rôles</h1>
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">👥 Quản lý người dùng & vai trò</h1>
   
       <div class="flex justify-between items-center mb-6">
         <input
           v-model="search"
           @input="filterUsers"
           type="text"
-          placeholder="🔍 Rechercher par nom..."
+          placeholder="🔍 Tìm kiếm theo tên..."
           class="px-4 py-2 border border-gray-300 rounded-full shadow w-full max-w-md focus:outline-none focus:ring focus:ring-blue-300"
         />
       </div>
@@ -23,10 +23,10 @@
         <table class="w-full text-left">
           <thead>
             <tr class="text-gray-700 border-b">
-              <th class="p-3">Nom</th>
+              <th class="p-3">Tên</th>
               <th class="p-3">Email</th>
-              <th class="p-3">Rôle</th>
-              <th class="p-3">Actions</th>
+              <th class="p-3">Vai trò</th>
+              <th class="p-3">Hành động</th>
             </tr>
           </thead>
           <tbody>
@@ -39,16 +39,16 @@
                   v-model="selectedRoles[user.id]"
                   class="border rounded px-3 py-1 focus:ring focus:ring-blue-300"
                 >
-                  <option value="admin">Admin</option>
-                  <option value="student">Étudiant</option>
-                  <option value="instructor">Instructeur</option>
+                  <option value="admin">Quản trị</option>
+                  <option value="student">Học viên</option>
+                  <option value="instructor">Giảng viên</option>
                   
                 </select>
                 <button
                   @click="confirmUpdate(user.id)"
                   class="px-3 py-1 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition"
                 >
-                  Valider
+                  Cập nhật
                 </button>
               </td>
             </tr>
@@ -96,13 +96,13 @@
   
   function confirmUpdate(userId) {
     Swal.fire({
-      title: 'Confirmer la modification ?',
-      text: "Voulez-vous vraiment changer le rôle de cet utilisateur ?",
+      title: 'Bạn chắc chắn muốn thay đổi?',
+      text: "Bạn có thật sự muốn thay đổi vai trò của người dùng này?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Oui, changer !'
+      confirmButtonText: 'Vâng, thay đổi!'
     }).then((result) => {
       if (result.isConfirmed) {
         updateUserRole(userId);
@@ -114,7 +114,7 @@
     router.put(route('admin.users.updateRole', { user: userId }), { role: selectedRoles.value[userId] }, {
       onSuccess: () => {
         toast({
-          text: "Rôle mis à jour avec succès !",
+          text: "Cập nhật vai trò thành công!",
           duration: 3000,
           close: true,
           gravity: "top",

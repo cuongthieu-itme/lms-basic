@@ -19,29 +19,29 @@ const courses = computed(() => page.props.courses);
     <div class="p-8 space-y-8 flex-1">
       <!-- Bienvenue -->
       <div class="bg-white rounded-2xl shadow p-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Bonjour, {{$page.props.auth.user.name }} 👋</h1>
-        <p class="text-gray-600">Bienvenue sur votre espace d'apprentissage. Continuez vos progrès ou explorez de nouveaux cours !</p>
+        <h1 class="text-2xl font-bold text-gray-800 mb-2">Xin chào, {{$page.props.auth.user.name }} 👋</h1>
+        <p class="text-gray-600">Chào mừng bạn đến với không gian học tập của mình. Hãy tiếp tục tiến độ hoặc khám phá các khóa học mới!</p>
       </div>
 
       <!-- Résumé Rapide -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between">
           <div>
-            <h2 class="text-lg text-gray-700 font-semibold">Total Cours</h2>
+            <h2 class="text-lg text-gray-700 font-semibold">Tổng khóa học</h2>
             <p class="text-2xl font-bold text-blue-600">{{ countCourse[0].enrolled_courses_count}}</p>
           </div>
           <AcademicCapIcon class="w-10 h-10 text-blue-400" />
         </div>
         <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between">
           <div>
-            <h2 class="text-lg text-gray-700 font-semibold">Cours Terminés</h2>
+            <h2 class="text-lg text-gray-700 font-semibold">Khóa học đã hoàn thành</h2>
             <p class="text-2xl font-bold text-green-600">{{ completedCourses }}</p>
           </div>
           <CheckCircleIcon class="w-10 h-10 text-green-400" />
         </div>
         <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between">
           <div>
-            <h2 class="text-lg text-gray-700 font-semibold">Progrès Moyen</h2>
+            <h2 class="text-lg text-gray-700 font-semibold">Tiến độ trung bình</h2>
             <p class="text-2xl font-bold text-yellow-600">{{ avgProgress }}%</p>
           </div>
           <ChartBarIcon class="w-10 h-10 text-yellow-400" />
@@ -51,21 +51,21 @@ const courses = computed(() => page.props.courses);
       <!-- Bouton Tous les Cours -->
       <div class="flex justify-end">
         <Link :href="route('cours.liste')" class="bg-green-500 text-white px-6 py-2 rounded-full shadow hover:bg-green-600 transition">
-          Voir Tous les Cours
+          Xem tất cả khóa học
         </Link>
       </div>
 
       <!-- Tableau des Cours Actuels -->
       <div class="bg-white p-6 rounded-2xl shadow">
-  <h2 class="text-2xl font-bold text-gray-800 mb-6">Mes Cours Actuels</h2>
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">Khóa học hiện tại của tôi</h2>
   <div class="overflow-x-auto">
     <table class="min-w-full divide-y divide-gray-200 text-sm">
       <thead class="bg-gray-100">
         <tr>
-          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Cours</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Progrès</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Statut</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Action</th>
+          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Khóa học</th>
+          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Tiến độ</th>
+          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Trạng thái</th>
+          <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase">Hành động</th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-100">
@@ -96,7 +96,7 @@ const courses = computed(() => page.props.courses);
                 :is="course.completed_lessons_count === course.lessons_count ? CheckCircleIcon : ClockIcon"
                 class="h-4 w-4"
               />
-              {{ course.completed_lessons_count === course.lessons_count ? 'Finished' : 'En cours' }}
+              {{ course.completed_lessons_count === course.lessons_count ? 'Hoàn thành' : 'Đang học' }}
             </span>
           </td>
 
@@ -105,12 +105,12 @@ const courses = computed(() => page.props.courses);
               :href="route('cours.show',course.id)" 
               class="inline-block bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700 transition"
             >
-              Continuer
+              Tiếp tục
             </Link>
           </td>
         </tr>
         <tr v-if="courses.length === 0">
-          <td colspan="4" class="px-6 py-4 text-center text-gray-500">Aucun cours en cours.</td>
+          <td colspan="4" class="px-6 py-4 text-center text-gray-500">Không có khóa học nào.</td>
         </tr>
       </tbody>
     </table>

@@ -28,18 +28,18 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Log in" />
+    <Head title="Đăng nhập" />
 
     <div class="min-h-screen flex">
         <!-- Left Section -->
         <div class="w-1/2 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-300 flex items-center justify-center">
-            <h1 class="text-5xl text-white font-bold">Welcome Back!</h1>
+            <h1 class="text-5xl text-white font-bold">Chào mừng bạn trở lại!</h1>
         </div>
 
         <!-- Right Section -->
         <div class="w-1/2 flex flex-col justify-center px-16 shadow-lg bg-white">
-            <h2 class="text-3xl font-bold mb-2 text-blue-700">Login</h2>
-            <p class="mb-6 text-gray-500">Welcome back! Please login to your account.</p>
+            <h2 class="text-3xl font-bold mb-2 text-blue-700">Đăng nhập</h2>
+            <p class="mb-6 text-gray-500">Chào mừng bạn quay lại! Vui lòng đăng nhập vào tài khoản của bạn.</p>
 
             <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
                 {{ status }}
@@ -47,7 +47,7 @@ const submit = () => {
 
             <form @submit.prevent="submit" class="space-y-4">
                 <div>
-                    <InputLabel for="email" value="User Name" class="text-gray-700" />
+                    <InputLabel for="email" value="Email" class="text-gray-700" />
                     <TextInput
                         id="email"
                         v-model="form.email"
@@ -61,7 +61,7 @@ const submit = () => {
                 </div>
 
                 <div>
-                    <InputLabel for="password" value="Password" class="text-gray-700" />
+                    <InputLabel for="password" value="Mật khẩu" class="text-gray-700" />
                     <TextInput
                         id="password"
                         v-model="form.password"
@@ -76,21 +76,21 @@ const submit = () => {
                 <div class="flex items-center justify-between">
                     <label class="flex items-center">
                         <Checkbox v-model:checked="form.remember" name="remember" />
-                        <span class="ms-2 text-sm text-gray-600">Remember Me</span>
+                        <span class="ms-2 text-sm text-gray-600">Ghi nhớ đăng nhập</span>
                     </label>
                     <Link v-if="canResetPassword" :href="route('password.request')" class="text-sm text-blue-600 hover:underline">
-                        Forgot Password?
+                        Quên mật khẩu?
                     </Link>
                 </div>
 
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition ease-in-out duration-150">
-                    Login
+                    Đăng nhập
                 </PrimaryButton>
 
                 <p class="mt-4 text-center text-sm text-gray-600">
-                    New User? 
-                    <Link :href="route('register')" class="text-blue-600 hover:underline">Signup</Link>
+                    Người dùng mới? 
+                    <Link :href="route('register')" class="text-blue-600 hover:underline">Đăng ký</Link>
                 </p>
             </form>
         </div>

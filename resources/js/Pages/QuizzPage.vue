@@ -3,7 +3,7 @@
     <!-- Titre -->
     <div class="max-w-2xl w-full text-center mb-10">
       <h1 class="text-4xl font-extrabold text-gray-800 mb-2">📝 Quiz : {{ quiz.title }}</h1>
-      <p class="text-gray-600 text-lg">Testez vos connaissances !</p>
+      <p class="text-gray-600 text-lg">Hãy kiểm tra kiến thức của bạn!</p>
     </div>
 
     <!-- Questions -->
@@ -42,14 +42,14 @@
         @click="submitQuiz"
         class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-blue-700 transition"
       >
-        Soumettre mes réponses
+        Nộp bài
       </button>
 
       <button
         @click="resetAnswers"
         class="bg-gray-300 text-gray-800 px-8 py-3 rounded-full font-semibold shadow hover:bg-gray-400 transition"
       >
-        Réinitialiser
+        Đặt lại
       </button>
 
       <button
@@ -57,7 +57,7 @@
         @click="goToNextQuiz"
         class="bg-green-500 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-green-600 transition"
       >
-        Quiz Suivant →
+        Quiz tiếp theo →
       </button>
     </div>
   </div>
@@ -84,14 +84,14 @@ const submitQuiz = async () => {
     })
 
     Swal.fire({
-      title: 'Résultat',
-      text: `Vous avez obtenu ${response.data.score} sur ${response.data.total} (${response.data.percentage.toFixed(2)}%)`,
+      title: 'Kết quả',
+      text: `Bạn đạt ${response.data.score} trên ${response.data.total} (${response.data.percentage.toFixed(2)}%)`,
       icon: 'success'
     })
   } catch (error) {
     Swal.fire({
-      title: 'Erreur',
-      text: 'Une erreur est survenue lors de la soumission.',
+      title: 'Lỗi',
+      text: 'Đã xảy ra lỗi khi nộp bài.',
       icon: 'error'
     })
   }

@@ -6,13 +6,13 @@
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        Retour au tableau de bord
+        Trở về bảng điều khiển
       </Link>
 
-      <h1 class="text-3xl font-bold text-gray-800">📚 Gestion des Cours</h1>
+      <h1 class="text-3xl font-bold text-gray-800">📚 Quản lý khóa học</h1>
 
       <Link :href="route('course.create')" class="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition">
-        + Ajouter un Cours
+        + Thêm khóa học
       </Link>
     </div>
 
@@ -21,7 +21,7 @@
         type="text"
         v-model="search"
         class="p-2 border rounded w-1/3 focus:ring focus:ring-blue-300"
-        placeholder="🔍 Filtrer par titre..."
+        placeholder="🔍 Lọc theo tiêu đề..."
       />
     </div>
 
@@ -37,11 +37,11 @@
         <table v-else key="table" class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Titre</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Instructeur</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date de Création</th>
-              <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Actions</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hình ảnh</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tiêu đề</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Giảng viên</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ngày tạo</th>
+              <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Hành động</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
@@ -56,16 +56,16 @@
               <td class="px-4 py-3 text-center space-x-2">
                 <Link :href="route('course.edit', course.id)"
                   class="bg-yellow-500 text-white px-4 py-2 rounded-full shadow hover:bg-yellow-600 transition">
-                  Modifier
+                  Chỉnh sửa
                 </Link>
                 <button @click="confirmDelete(course.id)"
                   class="bg-red-500 text-white px-4 py-2 rounded-full shadow hover:bg-red-600 transition">
-                  Supprimer
+                  Xóa
                 </button>
               </td>
             </tr>
             <tr v-if="paginatedCourses.length === 0">
-              <td colspan="5" class="text-center text-gray-500 py-6">Aucun cours correspondant.</td>
+              <td colspan="5" class="text-center text-gray-500 py-6">Không có khóa học phù hợp.</td>
             </tr>
           </tbody>
         </table>
@@ -127,18 +127,18 @@ function changePage(page) {
 
 function confirmDelete(id) {
   Swal.fire({
-    title: 'Êtes-vous sûr ?',
-    text: "Cette action est irréversible !",
+    title: 'Bạn có chắc không?',
+    text: "Hành động này không thể hoàn tác!",
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Oui, supprimer !',
-    cancelButtonText: 'Annuler'
+    confirmButtonText: 'Vâng, xóa!',
+    cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
       router.delete(route('course.destroy', id), {
         onSuccess: () => {
           toast({
-            text: "✅ Cours supprimé avec succès !",
+            text: "✅ Xóa khóa học thành công!",
             duration: 3000,
             close: true,
             gravity: "top",
@@ -152,7 +152,7 @@ function confirmDelete(id) {
 }
 
 function formatDate(dateString) {
-  return new Date(dateString).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+  return new Date(dateString).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
 onMounted(() => {

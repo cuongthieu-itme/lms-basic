@@ -129,23 +129,23 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Register" />
+    <Head title="Đăng ký" />
 
     <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
         <div class="flex flex-col md:flex-row bg-white shadow-lg rounded-2xl overflow-hidden w-full max-w-4xl">
             
             <!-- Left side -->
             <div class="md:w-1/2 bg-blue-500 text-white flex flex-col justify-center items-center p-10">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Join Us!</h2>
-                <p class="text-sm text-blue-100 text-center">Create your account and explore the possibilities.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Tham gia cùng nào!</h2>
+                <p class="text-sm text-blue-100 text-center">Tạo tài khoản và khám phá những cơ hội mới.</p>
             </div>
 
             <!-- Right side -->
             <div class="md:w-1/2 p-8 sm:p-10">
-                <h2 class="text-2xl font-bold mb-6 text-gray-700">Create Account</h2>
+                <h2 class="text-2xl font-bold mb-6 text-gray-700">Tạo tài khoản</h2>
                 <form @submit.prevent="submit" class="space-y-4">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Họ và tên</label>
                         <input 
                             id="name" 
                             v-model="form.name" 
@@ -172,7 +172,7 @@ const submit = () => {
                     </div>
 
                     <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
                         <input 
                             id="password" 
                             v-model="form.password" 
@@ -185,7 +185,7 @@ const submit = () => {
                     </div>
 
                     <div>
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Xác nhận mật khẩu</label>
                         <input 
                             id="password_confirmation" 
                             v-model="form.password_confirmation" 
@@ -206,23 +206,23 @@ const submit = () => {
                          class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500"
 />
                         <label for="terms" class="ml-2 text-sm text-gray-600">
-                            I agree to the 
-                            <a :href="route('terms.show')" target="_blank" class="underline text-blue-500 hover:text-blue-700">Terms of Service</a> 
-                            and 
-                            <a :href="route('policy.show')" target="_blank" class="underline text-blue-500 hover:text-blue-700">Privacy Policy</a>.
+                            Tôi đồng ý với 
+                            <a :href="route('terms.show')" target="_blank" class="underline text-blue-500 hover:text-blue-700">Điều khoản dịch vụ</a> 
+                            và 
+                            <a :href="route('policy.show')" target="_blank" class="underline text-blue-500 hover:text-blue-700">Chính sách bảo mật</a>.
                         </label>
                         <p v-if="form.errors.terms" class="text-red-500 text-xs mt-1 ml-2">{{ form.errors.terms }}</p>
                     </div>
 
                     <div class="flex items-center justify-between">
-                        <Link :href="route('login')" class="text-sm text-blue-500 hover:underline">Already registered?</Link>
+                        <Link :href="route('login')" class="text-sm text-blue-500 hover:underline">Đã có tài khoản?</Link>
                         <button 
                             type="submit" 
                             :disabled="form.processing"
                             :class="{'opacity-50': form.processing}"
                             class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
                         >
-                            Register
+                            Đăng ký
                         </button>
                     </div>
                 </form>

@@ -13,10 +13,10 @@
           </template>
           <template #content>
             <DropdownLink :href="route('profile.show')">
-              Profile
+              Hồ sơ
             </DropdownLink>
             <DropdownLink :href="route('dashboard')">
-              dashboard
+              Bảng điều khiển
             </DropdownLink>
 
           </template>

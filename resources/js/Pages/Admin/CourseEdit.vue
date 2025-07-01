@@ -7,9 +7,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
             </svg>
-            Retour
+            Trở về
           </Link>
-          <h1 class="text-3xl font-bold text-gray-800">Modifier le Cours</h1>
+          <h1 class="text-3xl font-bold text-gray-800">Chỉnh sửa khóa học</h1>
         </div>
       </div>
   
@@ -17,32 +17,32 @@
       <div class="bg-white p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
         <form @submit.prevent="updateCourse" class="space-y-6" enctype="multipart/form-data">
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Titre du Cours</label>
+            <label class="block text-gray-700 font-medium mb-2">Tiêu đề khóa học</label>
             <input v-model="course.title" type="text"
                    class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                    required />
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Description du Cours</label>
+            <label class="block text-gray-700 font-medium mb-2">Mô tả khóa học</label>
             <textarea v-model="course.description" rows="4"
                       class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:outline-none"
                       required></textarea>
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Image de Couverture</label>
+            <label class="block text-gray-700 font-medium mb-2">Ảnh bìa</label>
             <input type="file" @change="handleFileUpload" class="block w-full text-gray-600" accept="image/*" />
             <div v-if="course.photo_path_course && !newPhoto" class="mt-2 text-sm text-gray-600">
-              Image actuelle : {{ course.photo_path_course }}
+              Ảnh hiện tại: {{ course.photo_path_course }}
             </div>
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Instructeur</label>
+            <label class="block text-gray-700 font-medium mb-2">Giảng viên</label>
             <input type="text" v-model="searchQuery"
                    class="w-full border border-gray-300 rounded-lg p-3 mb-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                   placeholder="Chercher un instructeur..." />
+                   placeholder="Tìm kiếm giảng viên..." />
             <div class="max-h-40 overflow-auto border rounded-lg">
               <div v-for="instructor in filteredInstructors" :key="instructor.id"
                    @click="selectInstructor(instructor)"
@@ -51,13 +51,13 @@
               </div>
             </div>
             <div v-if="course.instructor_id" class="mt-2 text-sm text-green-600">
-              Instructeur sélectionné : {{ selectedInstructorName }}
+              Giảng viên đã chọn: {{ selectedInstructorName }}
             </div>
           </div>
   
           <div class="flex justify-end space-x-4">
             <button type="submit" class="px-6 py-2 bg-blue-600 rounded-full text-white hover:bg-blue-700 transition">
-              Mettre à jour
+              Cập nhật
             </button>
           </div>
         </form>
@@ -113,7 +113,7 @@
     router.post(route('course.update', course.value.id), formData, {
       onSuccess: () => {
         Toastify({
-          text: "Modification réussie !",
+          text: "Cập nhật thành công!",
           duration: 3000,
           gravity: "top",
           position: "right",
