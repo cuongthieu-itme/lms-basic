@@ -35,7 +35,7 @@ const logout = () => {
     
     <nav class="bg-white shadow p-4 flex justify-between items-center">
       <div class="flex items-center space-x-2">
-        <img :src="page.props.settings.logo_path??'/storage/logos/default-lms.png'" alt="Logo" class="h-10">
+        <img :src="page.props.settings?.logo_path??'/storage/logos/default-lms.png'" alt="Logo" class="h-10">
         <span class="font-bold text-xl text-gray-700">{{ page.props.settings?.site_name ?? 'LMS' }}</span>
       </div>
       <div class="relative" ref="dropdownRef">

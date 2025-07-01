@@ -37,7 +37,11 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'settings' => Setting::first(),
+            'settings' => Setting::first() ?? (object)[
+                'site_name' => 'LMS',
+                'site_description' => '',
+                'logo_path' => null,
+            ],
         ];
     }
 }
