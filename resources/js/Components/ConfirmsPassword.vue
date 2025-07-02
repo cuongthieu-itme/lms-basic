@@ -101,7 +101,7 @@ const closeModal = () => {
 
             <template #footer>
                 <SecondaryButton @click="closeModal">
-                    Cancel
+                    Hủy
                 </SecondaryButton>
 
                 <PrimaryButton

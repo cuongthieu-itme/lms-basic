@@ -1,38 +1,38 @@
 <template> 
     <div class="min-h-screen bg-gray-100 p-8">
       <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
-        <!-- Lien retour vers la gestion des leçons -->
+        <!-- Liên kết quay lại quản lý bài học -->
         <div class="mb-4">
           <Link 
             :href="route('lesson.manage')" 
             class="text-blue-600 hover:text-blue-800">
-            ← Retour à la gestion des leçons
+            ← Quay lại quản lý bài học
           </Link>
         </div>
   
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">Créer une Nouvelle Leçon</h1>
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Tạo bài học mới</h1>
         
         <form @submit.prevent="submit" enctype="multipart/form-data" class="space-y-6">
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Titre de la leçon</label>
+            <label class="block text-gray-700 font-medium mb-2">Tiêu đề bài học</label>
             <input v-model="form.title" type="text"
               class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              :class="{'border-red-500': errors.title}" placeholder="Entrez le titre">
+              :class="{'border-red-500': errors.title}" placeholder="Nhập tiêu đề">
             <p v-if="errors.title" class="text-red-500 text-sm mt-1">{{ errors.title }}</p>
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Contenu de la leçon</label>
+            <label class="block text-gray-700 font-medium mb-2">Nội dung bài học</label>
             <textarea v-model="form.content"
               class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              rows="4" placeholder="Description ou notes..."></textarea>
+              rows="4" placeholder="Mô tả hoặc ghi chú..."></textarea>
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Sélectionner un Cours</label>
+            <label class="block text-gray-700 font-medium mb-2">Chọn khóa học</label>
             <input v-model="searchQuery" type="text"
               class="w-full border p-3 rounded-lg mb-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-              placeholder="Rechercher un cours..." />
+              placeholder="Tìm kiếm khóa học..." />
             <div class="max-h-40 overflow-auto border rounded-lg">
               <div v-for="course in filteredCourses" :key="course.id"
                 @click="selectCourse(course)"
@@ -44,7 +44,7 @@
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Vidéo de la Leçon</label>
+            <label class="block text-gray-700 font-medium mb-2">Video bài học</label>
             <input type="file" @change="handleVideoUpload" accept="video/*"
               class="block w-full text-gray-600" />
             <p v-if="errors.video_url" class="text-red-500 text-sm mt-1">{{ errors.video_url }}</p>
@@ -53,7 +53,7 @@
           <div class="flex justify-end">
             <button type="submit"
               class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-              Enregistrer la Leçon
+              Lưu bài học
             </button>
           </div>
         </form>
@@ -63,7 +63,7 @@
   
   <script setup>
   import { ref, computed } from 'vue';
-  import { Link } from '@inertiajs/vue3';  // Importer le composant Link
+  import { Link } from '@inertiajs/vue3';  // Import component Link
   import Toastify from 'toastify-js';
   import "toastify-js/src/toastify.css";
   
@@ -95,9 +95,9 @@
   
   function submit() {
     errors.value = {};
-    if (!form.value.title) errors.value.title = "Le titre est obligatoire.";
-    if (!form.value.course_id) errors.value.course_id = "Veuillez sélectionner un cours.";
-    if (!videoFile.value) errors.value.video_url = "Veuillez télécharger une vidéo.";
+    if (!form.value.title) errors.value.title = "Tiêu đề là bắt buộc.";
+    if (!form.value.course_id) errors.value.course_id = "Vui lòng chọn một khóa học.";
+    if (!videoFile.value) errors.value.video_url = "Vui lòng tải lên một video.";
   
     if (Object.keys(errors.value).length > 0) return;
   
@@ -114,7 +114,7 @@
         form.value = { title: '', content: '', course_id: null };
         videoFile.value = null;
         Toastify({
-          text: "Leçon créée avec succès !",
+          text: "Bài học đã được tạo thành công!",
           duration: 3000,
           close: true,
           gravity: "top",

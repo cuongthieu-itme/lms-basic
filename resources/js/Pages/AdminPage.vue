@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col">
 
-    <!-- Barre de navigation -->
+    <!-- Thanh điều hướng -->
     <nav-bar/>
 
-    <!-- Contenu principal -->
+    <!-- Nội dung chính -->
     <div class="flex flex-col md:flex-row gap-6 p-8">
 
-      <!-- Menu latéral -->
+      <!-- Menu bên -->
       <aside class="bg-white shadow rounded-2xl p-6 w-full md:w-64 space-y-4">
         <h2 class="text-lg font-semibold text-gray-700 mb-2">Quản lý</h2>
         <ul class="space-y-2">
@@ -44,7 +44,7 @@
         </ul>
       </aside>
 
-      <!-- Zone de gestion principale -->
+      <!-- Khu vực quản lý chính -->
       <section class="flex-1 bg-white rounded-2xl shadow p-6">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">
           Chào mừng đến trang quản trị
@@ -53,7 +53,7 @@
           Chọn một mục trong menu để quản lý nội dung, khóa học, người dùng, quiz và cài đặt.
         </p>
 
-        <!-- Statistiques dynamiques -->
+        <!-- Thống kê động -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div class="bg-blue-50 p-6 rounded-2xl flex flex-col justify-center items-center shadow-sm">
             <h3 class="text-lg font-semibold text-gray-700 mb-1">Tổng khóa học</h3>

@@ -17,13 +17,13 @@ const courses = computed(() => page.props.courses);
   <DashboardLayout>
     <template #content>
     <div class="p-8 space-y-8 flex-1">
-      <!-- Bienvenue -->
+      <!-- Chào mừng -->
       <div class="bg-white rounded-2xl shadow p-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-2">Xin chào, {{$page.props.auth.user.name }} 👋</h1>
         <p class="text-gray-600">Chào mừng bạn đến với không gian học tập của mình. Hãy tiếp tục tiến độ hoặc khám phá các khóa học mới!</p>
       </div>
 
-      <!-- Résumé Rapide -->
+      <!-- Tóm tắt nhanh -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-5 rounded-2xl shadow flex items-center justify-between">
           <div>
@@ -48,14 +48,14 @@ const courses = computed(() => page.props.courses);
         </div>
       </div>
 
-      <!-- Bouton Tous les Cours -->
+      <!-- Nút xem tất cả khóa học -->
       <div class="flex justify-end">
         <Link :href="route('cours.liste')" class="bg-green-500 text-white px-6 py-2 rounded-full shadow hover:bg-green-600 transition">
           Xem tất cả khóa học
         </Link>
       </div>
 
-      <!-- Tableau des Cours Actuels -->
+      <!-- Bảng khóa học hiện tại -->
       <div class="bg-white p-6 rounded-2xl shadow">
   <h2 class="text-2xl font-bold text-gray-800 mb-6">Khóa học hiện tại của tôi</h2>
   <div class="overflow-x-auto">

@@ -52,11 +52,11 @@
   <script setup>
   import { ref } from 'vue';
   
-  const courseTitle = 'Laravel pour Débutants';
+  const courseTitle = 'Laravel cho người mới bắt đầu';
   
   // Simulation de données
   const quizzList = ref([
-    { id: 1, name: 'Introduction à Laravel', questionsCount: 10, created_at: '2025-04-10' },
+    { id: 1, name: 'Giới thiệu Laravel', questionsCount: 10, created_at: '2025-04-10' },
     { id: 2, name: 'Middleware & Routing', questionsCount: 8, created_at: '2025-04-12' },
     { id: 3, name: 'Eloquent ORM', questionsCount: 15, created_at: '2025-04-14' },
   ]);

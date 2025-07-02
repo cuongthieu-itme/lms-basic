@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-100 p-8">
-    <!-- En-tête -->
+    <!-- Đầu trang -->
     <div class="mb-8 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <Link :href="route('admin.page')" class="flex items-center text-blue-600 hover:text-blue-800 transition">
@@ -13,10 +13,10 @@
       </div>
     </div>
 
-    <!-- Formulaire -->
+    <!-- Form -->
     <div class="bg-white p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
       <form @submit.prevent="submitCourse" class="space-y-6" enctype="multipart/form-data">
-        <!-- Titre -->
+        <!-- Tiêu đề -->
         <div>
           <label class="block text-gray-700 font-medium mb-2">Tiêu đề khóa học</label>
           <input
@@ -28,7 +28,7 @@
           <p v-if="errors.title" class="text-red-600 text-sm mt-1">{{ errors.title }}</p>
         </div>
 
-        <!-- Description -->
+        <!-- Mô tả -->
         <div>
           <label class="block text-gray-700 font-medium mb-2">Mô tả khóa học</label>
           <textarea
@@ -40,7 +40,7 @@
           <p v-if="errors.description" class="text-red-600 text-sm mt-1">{{ errors.description }}</p>
         </div>
 
-        <!-- Photo -->
+        <!-- Ảnh -->
         <div>
           <label class="block text-gray-700 font-medium mb-2">Ảnh bìa</label>
           <input
@@ -52,7 +52,7 @@
           <p v-if="errors.photo" class="text-red-600 text-sm mt-1">{{ errors.photo }}</p>
         </div>
 
-        <!-- Sélection Instructeur avec filtre -->
+        <!-- Chọn giảng viên với bộ lọc -->
         <div>
           <label class="block text-gray-700 font-medium mb-2">Giảng viên</label>
           <input
@@ -77,7 +77,7 @@
           <p v-if="errors.instructor_id" class="text-red-600 text-sm mt-1">{{ errors.instructor_id }}</p>
         </div>
 
-        <!-- Boutons -->
+        <!-- Nút bấm -->
         <div class="flex justify-end space-x-4">
           <button type="reset" class="px-6 py-2 bg-gray-300 rounded-full hover:bg-gray-400 text-gray-800">
             Đặt lại

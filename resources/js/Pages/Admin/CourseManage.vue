@@ -1,12 +1,12 @@
 <template>
   <div class="min-h-screen bg-gray-100 p-6">
-    <!-- Lien retour -->
+    <!-- Liên kết quay lại -->
     <div class="flex justify-between items-center mb-6">
       <Link :href="route('admin.page')" class="flex items-center text-blue-600 hover:underline">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        Trở về bảng điều khiển
+        Trở về Dashboard
       </Link>
 
       <h1 class="text-3xl font-bold text-gray-800">📚 Quản lý khóa học</h1>
@@ -47,7 +47,7 @@
           <tbody class="divide-y divide-gray-200">
             <tr v-for="course in paginatedCourses" :key="course.id">
               <td class="px-4 py-3">
-                <img :src="`/storage/Photo/${course.photo_path_course}`" alt="Image du cours"
+                <img :src="`/storage/Photo/${course.photo_path_course}`" alt="Hình ảnh khóa học"
                   class="w-16 h-16 object-cover rounded-lg shadow" />
               </td>
               <td class="px-4 py-3 font-semibold text-gray-700">{{ course.title }}</td>

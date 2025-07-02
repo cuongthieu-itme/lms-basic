@@ -1,12 +1,12 @@
 <template>
   <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-start py-12 px-4 md:px-8">
-    <!-- Titre -->
+    <!-- Tiêu đề -->
     <div class="max-w-2xl w-full text-center mb-10">
       <h1 class="text-4xl font-extrabold text-gray-800 mb-2">📝 Quiz : {{ quiz.title }}</h1>
       <p class="text-gray-600 text-lg">Hãy kiểm tra kiến thức của bạn!</p>
     </div>
 
-    <!-- Questions -->
+    <!-- Câu hỏi -->
     <div class="max-w-2xl w-full space-y-8">
       <div
         v-for="(question, index) in questions"
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <!-- Boutons -->
+    <!-- Nút bấm -->
     <div class="flex flex-col md:flex-row gap-4 mt-12">
       <button
         @click="submitQuiz"

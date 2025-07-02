@@ -12,7 +12,7 @@
                     :href="route('dashboard')"
                     class="px-4 py-2 rounded-md text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition"
                 >
-                    Bảng điều khiển
+                    Dashboard
                 </Link>
 
                 <template v-else>

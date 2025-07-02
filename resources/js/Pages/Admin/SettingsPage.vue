@@ -5,37 +5,37 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7" />
           </svg>
-          Retour
+          Trở về
         </Link>
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">⚙️ Paramètres Générales</h1>
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">⚙️ Cài đặt chung</h1>
       </div>
   
       <form @submit.prevent="submit" class="bg-white rounded-2xl shadow p-6 space-y-4 max-w-2xl">
         <div>
-          <label for="site_name" class="block font-semibold text-gray-700">Nom du site</label>
+          <label for="site_name" class="block font-semibold text-gray-700">Tên trang web</label>
           <input id="site_name" v-model="form.site_name" type="text"
                  class="mt-1 p-2 w-full border rounded focus:ring focus:ring-blue-300"
-                 placeholder="Entrez le nom du site" />
+                 placeholder="Nhập tên trang web" />
         </div>
   
         <div>
-          <label for="site_description" class="block font-semibold text-gray-700">Description</label>
+          <label for="site_description" class="block font-semibold text-gray-700">Mô tả</label>
           <textarea id="site_description" v-model="form.site_description"
                     class="mt-1 p-2 w-full border rounded focus:ring focus:ring-blue-300"
-                    placeholder="Entrez une description..."></textarea>
+                    placeholder="Nhập mô tả..."></textarea>
         </div>
   
         <div>
-          <label for="logo" class="block font-semibold text-gray-700">Logo du site</label>
+          <label for="logo" class="block font-semibold text-gray-700">Logo trang web</label>
           <input id="logo" type="file" @change="onFileChange"
                  class="mt-1 block w-full text-gray-700 border rounded cursor-pointer" />
           <div v-if="setting.logo_path" class="mt-2 ">
-            <img :src="`/storage/logos/${setting.logo_path}`" alt="Logo actuel" class="h-16 rounded-full shadow" />
+            <img :src="`/storage/logos/${setting.logo_path}`" alt="Logo hiện tại" class="h-16 rounded-full shadow" />
           </div>
         </div>
   
         <div>
-          <label for="items_per_page" class="block font-semibold text-gray-700">Éléments par page</label>
+          <label for="items_per_page" class="block font-semibold text-gray-700">Số mục trên trang</label>
           <input id="items_per_page" v-model="form.items_per_page" type="number" min="1"
                  class="mt-1 p-2 w-32 border rounded focus:ring focus:ring-blue-300" />
         </div>
@@ -43,7 +43,7 @@
         <button type="submit"
                 :disabled="form.processing"
                 class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
-          💾 {{ form.processing ? 'Enregistrement...' : 'Enregistrer' }}
+          💾 {{ form.processing ? 'Đang lưu...' : 'Lưu' }}
         </button>
       </form>
     </div>
@@ -77,7 +77,7 @@
     // Vérification si les champs sont vides avant soumission
     if (!form.site_name || !form.items_per_page) {
       toast({
-        text: "❌ Les champs sont requis !",
+        text: "❌ Các trường là bắt buộc!",
         duration: 3000,
         close: true,
         gravity: "top",
@@ -88,11 +88,11 @@
     }
   
     Swal.fire({
-      title: 'Confirmer la modification ?',
-      text: "Les paramètres vont être sauvegardés.",
+      title: 'Xác nhận thay đổi?',
+      text: "Các cài đặt sẽ được lưu lại.",
       icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Oui, enregistrer !'
+      confirmButtonText: 'Có, lưu lại!'
     }).then(result => {
       if (result.isConfirmed) {
         form.post(route('admin.settings.update', props.setting.id), {
@@ -100,7 +100,7 @@
           forceFormData: true,
           onSuccess: () => {
             toast({
-              text: "✅ Paramètres mis à jour avec succès !",
+              text: "✅ Cập nhật cài đặt thành công!",
               duration: 3000,
               close: true,
               gravity: "top",
@@ -109,9 +109,9 @@
             }).showToast()
           },
           onError: (errors) => {
-            console.error("Erreurs de validation : ", errors);
+            console.error("Lỗi xác thực: ", errors);
             toast({
-              text: "❌ Erreur lors de l'enregistrement.",
+              text: "❌ Lỗi khi lưu.",
               duration: 3000,
               close: true,
               gravity: "top",

@@ -1,27 +1,27 @@
 <template>
-    <div class="p-8 bg-gray-100 min-h-screen space-y-8">
-      <!-- Titre -->
-      <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800">Questions pour : {{ quizzName }}</h1>
+      <div class="p-8 bg-gray-100 min-h-screen space-y-8">
+    <!-- Tiêu đề -->
+    <div class="flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800">Câu hỏi cho: {{ quizzName }}</h1>
         <button
           @click="openModal = true"
           class="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
         >
-          ➕ Ajouter une Question
+          ➕ Thêm câu hỏi
         </button>
       </div>
   
-      <!-- Liste des Questions -->
-      <div class="bg-white rounded-2xl shadow p-6 overflow-x-auto">
-        <h2 class="text-xl font-semibold text-gray-700 mb-4">Liste des Questions</h2>
+          <!-- Danh sách câu hỏi -->
+    <div class="bg-white rounded-2xl shadow p-6 overflow-x-auto">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Danh sách câu hỏi</h2>
   
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Question</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Réponses</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Bonne Réponse</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Action</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Câu hỏi</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Đáp án</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Đáp án đúng</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Hành động</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
@@ -30,34 +30,34 @@
               <td class="px-6 py-4 text-gray-600">{{ question.choices.join(', ') }}</td>
               <td class="px-6 py-4 text-green-700 font-bold">{{ question.correct }}</td>
               <td class="px-6 py-4 text-right">
-                <button class="text-sm text-blue-600 hover:underline mr-3">Modifier</button>
-                <button class="text-sm text-red-600 hover:underline">Supprimer</button>
+                <button class="text-sm text-blue-600 hover:underline mr-3">Sửa</button>
+                <button class="text-sm text-red-600 hover:underline">Xóa</button>
               </td>
             </tr>
             <tr v-if="questions.length === 0">
-              <td colspan="4" class="px-6 py-4 text-center text-gray-500">Aucune question disponible.</td>
+              <td colspan="4" class="px-6 py-4 text-center text-gray-500">Không có câu hỏi nào.</td>
             </tr>
           </tbody>
         </table>
       </div>
   
-      <!-- Modal Ajouter Question -->
-      <div v-if="openModal" class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 space-y-4">
-          <h2 class="text-xl font-bold text-gray-800">Ajouter une Question</h2>
+          <!-- Modal thêm câu hỏi -->
+    <div v-if="openModal" class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+      <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 space-y-4">
+        <h2 class="text-xl font-bold text-gray-800">Thêm câu hỏi</h2>
   
           <div class="space-y-3">
-            <label class="block text-sm text-gray-700 font-semibold">Question</label>
+                        <label class="block text-sm text-gray-700 font-semibold">Câu hỏi</label>
             <input type="text" v-model="newQuestion.text"
-              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Écrivez la question ici" />
-  
-            <label class="block text-sm text-gray-700 font-semibold">Réponses possibles (séparées par une virgule)</label>
+              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Nhập câu hỏi tại đây" />
+
+            <label class="block text-sm text-gray-700 font-semibold">Các đáp án (cách nhau bằng dấu phẩy)</label>
             <input type="text" v-model="newQuestion.choices"
-              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Exemple: Réponse A, Réponse B, Réponse C" />
-  
-            <label class="block text-sm text-gray-700 font-semibold">Bonne Réponse</label>
+              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Ví dụ: Đáp án A, Đáp án B, Đáp án C" />
+
+            <label class="block text-sm text-gray-700 font-semibold">Đáp án đúng</label>
             <input type="text" v-model="newQuestion.correct"
-              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Entrez la bonne réponse" />
+              class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-300" placeholder="Nhập đáp án đúng" />
           </div>
   
           <div class="flex justify-between pt-4">
@@ -65,13 +65,13 @@
               @click="saveQuestion"
               class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition"
             >
-              ✅ Enregistrer
+              ✅ Lưu
             </button>
             <button
               @click="openModal = false"
               class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-400 transition"
             >
-              Annuler
+              Hủy
             </button>
           </div>
         </div>
@@ -85,8 +85,8 @@
   const quizzName = "Quizz Laravel #1";
   
   const questions = ref([
-    { text: "Laravel utilise quel moteur de template ?", choices: ["Twig", "Blade", "Smarty"], correct: "Blade" },
-    { text: "Quel Artisan permet de créer un contrôleur ?", choices: ["make:model", "make:controller", "serve"], correct: "make:controller" }
+    { text: "Laravel sử dụng template engine nào?", choices: ["Twig", "Blade", "Smarty"], correct: "Blade" },
+    { text: "Lệnh Artisan nào được dùng để tạo controller?", choices: ["make:model", "make:controller", "serve"], correct: "make:controller" }
   ]);
   
   const openModal = ref(false);
@@ -107,7 +107,7 @@
       openModal.value = false;
       newQuestion.value = { text: '', choices: '', correct: '' };
     } else {
-      alert("Veuillez remplir tous les champs.");
+      alert("Vui lòng điền đầy đủ thông tin.");
     }
   }
   </script>

@@ -86,9 +86,9 @@ const clearPhotoFileInput = () => {
         </template>
 
         <template #form>
-            <!-- Profile Photo -->
+            <!-- Ảnh đại diện -->
             <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
-                <!-- Profile Photo File Input -->
+                <!-- Input file ảnh đại diện -->
                 <input
                     id="photo"
                     ref="photoInput"
@@ -99,12 +99,12 @@ const clearPhotoFileInput = () => {
 
                 <InputLabel for="photo" value="Ảnh" />
 
-                <!-- Current Profile Photo -->
+                <!-- Ảnh đại diện hiện tại -->
                 <div v-show="! photoPreview" class="mt-2">
                     <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full size-20 object-cover">
                 </div>
 
-                <!-- New Profile Photo Preview -->
+                <!-- Xem trước ảnh đại diện mới -->
                 <div v-show="photoPreview" class="mt-2">
                     <span
                         class="block rounded-full size-20 bg-cover bg-no-repeat bg-center"
@@ -128,7 +128,7 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
 
-            <!-- Name -->
+            <!-- Họ tên -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Họ và tên" />
                 <TextInput
@@ -144,7 +144,7 @@ const clearPhotoFileInput = () => {
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Địa chỉ email" />
                 <TextInput
                     id="email"
                     v-model="form.email"

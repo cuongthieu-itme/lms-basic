@@ -21,28 +21,28 @@ watch(search, debounce((value) => {
   <DashboardLayout>
     <template #content>
       <div class="bg-white rounded-2xl shadow p-6 text-center mb-6">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Tous les Cours</h1>
-        <p class="text-gray-600">Explorez et commencez une nouvelle formation dès aujourd'hui !</p>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Tất cả khóa học</h1>
+        <p class="text-gray-600">Khám phá và bắt đầu một khóa đào tạo mới ngay hôm nay!</p>
       </div>
 
-      <!-- Barre de recherche -->
+      <!-- Thanh tìm kiếm -->
       <div class="flex justify-center mb-8">
         <input
           v-model="search"
           type="text"
-          placeholder="Rechercher un cours..."
+          placeholder="Tìm kiếm khóa học..."
           class="w-full md:w-1/3 px-4 py-2 rounded-2xl border shadow focus:ring focus:ring-blue-200 focus:outline-none"
         />
       </div>
 
-      <!-- Grille des cours -->
+      <!-- Lưới khóa học -->
       <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="course in courses.data"
           :key="course.id"
           class="bg-white rounded-2xl shadow hover:shadow-lg transition flex flex-col"
         >
-          <img :src="course.photo" alt="Image du cours" class="rounded-t-2xl object-cover h-40 w-full">
+          <img :src="course.photo" alt="Hình ảnh khóa học" class="rounded-t-2xl object-cover h-40 w-full">
           <div class="p-5 flex-1 flex flex-col justify-between">
             <div>
               <h2 class="text-lg font-semibold text-gray-800 mb-2">{{ course.title }}</h2>
@@ -55,7 +55,7 @@ watch(search, debounce((value) => {
                   course.enrolled ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-600'
                 ]"
               >
-                {{ course.enrolled ? 'En cours' : 'Non commencé' }}
+                {{ course.enrolled ? 'Đang học' : 'Chưa bắt đầu' }}
               </span>
               <Link
                 :href="course.enrolled
@@ -63,28 +63,28 @@ watch(search, debounce((value) => {
                   : `/subscribe/${course.id}`"
                 class="bg-blue-500 text-white px-4 py-2 rounded-full shadow hover:bg-blue-600 transition"
               >
-                {{ course.enrolled ? 'Continuer' : 'Commencer' }}
+                {{ course.enrolled ? 'Tiếp tục' : 'Bắt đầu' }}
             </Link>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Pagination -->
+      <!-- Phân trang -->
       <div class="flex justify-center mt-8">
         <button
           v-if="courses.prev_page_url"
           @click="router.get(courses.prev_page_url)"
           class="mx-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition"
         >
-          Précédent
+          Trước
         </button>
         <button
           v-if="courses.next_page_url"
           @click="router.get(courses.next_page_url)"
           class="mx-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition"
         >
-          Suivant
+          Tiếp theo
         </button>
       </div>
     </template>

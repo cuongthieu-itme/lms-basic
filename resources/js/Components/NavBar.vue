@@ -16,7 +16,7 @@
               Hồ sơ
             </DropdownLink>
             <DropdownLink :href="route('dashboard')">
-              Bảng điều khiển
+              Dashboard
             </DropdownLink>
 
           </template>

@@ -21,7 +21,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Forgot Password" />
+    <Head title="Quên mật khẩu" />
 
     <AuthenticationCard>
         <template #logo>
@@ -29,7 +29,7 @@ const submit = () => {
         </template>
 
         <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+            Quên mật khẩu? Đừng lo. Chỉ cần cho chúng tôi biết địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn một liên kết đặt lại mật khẩu cho phép bạn chọn mật khẩu mới.
         </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -53,7 +53,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
+                    Gửi liên kết đặt lại mật khẩu
                 </PrimaryButton>
             </div>
         </form>

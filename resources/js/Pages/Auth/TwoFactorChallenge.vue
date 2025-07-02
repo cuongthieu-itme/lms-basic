@@ -38,7 +38,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Two-factor Confirmation" />
+    <Head title="Xác thực hai yếu tố" />
 
     <AuthenticationCard>
         <template #logo>
@@ -47,17 +47,17 @@ const submit = () => {
 
         <div class="mb-4 text-sm text-gray-600">
             <template v-if="! recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator application.
+                Vui lòng xác nhận quyền truy cập vào tài khoản của bạn bằng cách nhập mã xác thực được cung cấp bởi ứng dụng xác thực của bạn.
             </template>
 
             <template v-else>
-                Please confirm access to your account by entering one of your emergency recovery codes.
+                Vui lòng xác nhận quyền truy cập vào tài khoản của bạn bằng cách nhập một trong các mã khôi phục khẩn cấp của bạn.
             </template>
         </div>
 
         <form @submit.prevent="submit">
             <div v-if="! recovery">
-                <InputLabel for="code" value="Code" />
+                <InputLabel for="code" value="Mã xác thực" />
                 <TextInput
                     id="code"
                     ref="codeInput"
@@ -72,7 +72,7 @@ const submit = () => {
             </div>
 
             <div v-else>
-                <InputLabel for="recovery_code" value="Recovery Code" />
+                <InputLabel for="recovery_code" value="Mã khôi phục" />
                 <TextInput
                     id="recovery_code"
                     ref="recoveryCodeInput"
@@ -87,16 +87,16 @@ const submit = () => {
             <div class="flex items-center justify-end mt-4">
                 <button type="button" class="text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer" @click.prevent="toggleRecovery">
                     <template v-if="! recovery">
-                        Use a recovery code
+                        Sử dụng mã khôi phục
                     </template>
 
                     <template v-else>
-                        Use an authentication code
+                        Sử dụng mã xác thực
                     </template>
                 </button>
 
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    Đăng nhập
                 </PrimaryButton>
             </div>
         </form>

@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen bg-gray-100 p-8">
-      <!-- En-tête -->
+      <!-- Đầu trang -->
       <div class="mb-8 flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <Link :href="route('course.manage')" class="flex items-center text-blue-600 hover:text-blue-800 transition">
@@ -13,7 +13,7 @@
         </div>
       </div>
   
-      <!-- Formulaire -->
+      <!-- Form -->
       <div class="bg-white p-8 rounded-2xl shadow-md max-w-3xl mx-auto">
         <form @submit.prevent="updateCourse" class="space-y-6" enctype="multipart/form-data">
           <div>

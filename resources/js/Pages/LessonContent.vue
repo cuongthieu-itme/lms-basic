@@ -7,18 +7,18 @@
     </div>
 
     <div class="bg-white p-6 rounded-2xl shadow space-y-6">
-      <!-- Player vidéo HTML5 -->
+      <!-- Trình phát video HTML5 -->
       <div v-if="lesson.videoUrl" class="w-full max-w-4xl mx-auto rounded-lg overflow-hidden">
         <video
           class="w-full rounded-lg"
           controls
           :src="lesson.videoUrl"
         >
-          Votre navigateur ne supporte pas la lecture vidéo.
+          Trình duyệt của bạn không hỗ trợ phát video.
         </video>
       </div>
 
-      <!-- Texte explicatif -->
+      <!-- Nội dung giải thích -->
       <div class="text-gray-700 leading-relaxed">
         <p v-for="(paragraph, index) in lesson.content" :key="index" class="mb-4">
           {{ paragraph }}
@@ -27,20 +27,20 @@
     </div>
 
     <div class="flex justify-between items-center mt-6">
-      <Link :href="route('cours.show',lesson.course_id)" class="text-blue-600 hover:underline">Retour au cours</Link>
+      <Link :href="route('cours.show',lesson.course_id)" class="text-blue-600 hover:underline">Quay lại khóa học</Link>
 
       <div class="flex space-x-4">
         <button @click="navigate('prev')" class="px-6 py-2 bg-gray-500 text-white rounded-full shadow hover:bg-gray-600 transition">
-          Précédent
+          Trước
         </button>
         <button @click="navigate('next')" class="px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition">
-          Suivant
+          Tiếp theo
         </button>
       </div>
 
       <button @click="markAsCompleted"
         class="px-6 py-3 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition">
-        {{ lesson.completed ? 'Revoir la leçon' : 'Marquer comme terminé' }}
+        {{ lesson.completed ? 'Ôn lại bài học' : 'Đánh dấu hoàn thành' }}
       </button>
     </div>
 
@@ -61,19 +61,19 @@ const props = defineProps({
 function markAsCompleted() {
   if (!props.lesson.completed) {
     Swal.fire({
-      title: 'Êtes-vous sûr ?',
-      text: "Voulez-vous marquer cette leçon comme terminée ?",
+      title: 'Bạn có chắc không?',
+      text: "Bạn có muốn đánh dấu bài học này là đã hoàn thành?",
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#10B981',
       cancelButtonColor: '#EF4444',
-      confirmButtonText: 'Oui, marquer !'
+      confirmButtonText: 'Có, đánh dấu!'
     }).then((result) => {
       if (result.isConfirmed) {
         router.post(`/lesson/${props.lesson.id}/complete`, {}, {
           onSuccess: () => {
             Toastify({
-              text: "✅ Leçon marquée comme terminée !",
+              text: "✅ Bài học đã được đánh dấu hoàn thành!",
               duration: 3000,
               gravity: "top",
               position: "right",
@@ -86,8 +86,8 @@ function markAsCompleted() {
   } else {
     Swal.fire({
       icon: 'info',
-      title: 'Déjà terminée',
-      text: 'Vous avez déjà terminé cette leçon.',
+      title: 'Đã hoàn thành',
+      text: 'Bạn đã hoàn thành bài học này rồi.',
       confirmButtonText: 'OK'
     });
   }

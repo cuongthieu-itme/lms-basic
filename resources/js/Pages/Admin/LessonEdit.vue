@@ -2,15 +2,15 @@
     <div class="min-h-screen bg-gray-100 p-8">
       <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
         <div class="flex justify-between items-center mb-6">
-          <h1 class="text-2xl font-bold text-gray-800">Modifier la Leçon</h1>
+          <h1 class="text-2xl font-bold text-gray-800">Chỉnh sửa bài học</h1>
           <Link :href="route('lesson.manage')" class="text-blue-600 hover:underline text-sm">
-            ← Retour à la gestion des leçons
+            ← Quay lại quản lý bài học
           </Link>
         </div>
   
         <form @submit.prevent="submit" enctype="multipart/form-data" class="space-y-6">
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Titre de la leçon</label>
+            <label class="block text-gray-700 font-medium mb-2">Tiêu đề bài học</label>
             <input v-model="form.title" type="text"
               class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
               :class="{'border-red-500': errors.title}" />
@@ -18,17 +18,17 @@
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Cours associé</label>
+            <label class="block text-gray-700 font-medium mb-2">Khóa học liên kết</label>
             <input
               type="text"
-              placeholder="🔍 Rechercher un cours..."
+              placeholder="🔍 Tìm kiếm khóa học..."
               v-model="courseSearch"
               class="w-full border mb-2 p-3 rounded-lg"
             />
             <select v-model="form.course_id"
               class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
               :class="{'border-red-500': errors.course_id}">
-              <option value="">-- Sélectionner un cours --</option>
+              <option value="">-- Chọn khóa học --</option>
               <option
                 v-for="course in filteredCourses"
                 :key="course.id"
@@ -39,14 +39,14 @@
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Contenu</label>
+            <label class="block text-gray-700 font-medium mb-2">Nội dung</label>
             <textarea v-model="form.content"
               class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
               rows="4"></textarea>
           </div>
   
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Vidéo (laisser vide pour ne pas modifier)</label>
+            <label class="block text-gray-700 font-medium mb-2">Video (để trống nếu không muốn thay đổi)</label>
             <input type="file" @change="handleVideoUpload" accept="video/*"
               class="block w-full text-gray-600" />
             <p v-if="errors.video_url" class="text-red-500 text-sm mt-1">{{ errors.video_url }}</p>
@@ -55,7 +55,7 @@
           <div class="flex justify-end">
             <button type="submit"
               class="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-              Enregistrer
+              Lưu
             </button>
           </div>
         </form>
@@ -110,8 +110,8 @@
       onError: (err) => { errors.value = err },
       onSuccess: () => {
         Swal.fire({
-          title: 'Succès',
-          text: 'Leçon mise à jour avec succès !',
+          title: 'Thành công',
+          text: 'Bài học đã được cập nhật thành công!',
           icon: 'success',
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'OK'
